@@ -637,13 +637,13 @@ s_iou<-length(s_intersect)/length(s_union)
 
 n_iou<-length(n_intersect)/length(n_union)
 
-iou_matrix[1,cell_num_i/100]<-a_iou
+iou_matrix[1,Cell_num_i/100]<-a_iou
 
-iou_matrix[2,cell_num_i/100]<-g_iou
+iou_matrix[2,Cell_num_i/100]<-g_iou
 
-iou_matrix[3,cell_num_i/100]<-s_iou
+iou_matrix[3,Cell_num_i/100]<-s_iou
 
-iou_matrix[4,cell_num_i/100]<-n_iou
+iou_matrix[4,Cell_num_i/100]<-n_iou
  
 }
 
