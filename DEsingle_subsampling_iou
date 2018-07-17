@@ -554,6 +554,12 @@ DEa_num <- 500
 
 gene_sum <- sum(nDE_num, DEg_num, DEa_num, DEs_num)
 
+iou_matrix<-matrix(NA,4,10)
+
+rownames(iou_matrix)<-c("DEa","DEg","DEs","nDE")
+
+colnames(iou_matrix)<-c(as.character(seq(100,1000,100)))
+
 for(Cell_num_i in Cell_in_one_group){
 
 counts <- Generate_DEs(Cell_num_i , DEs_num)
@@ -566,13 +572,13 @@ counts <- rbind(counts, Generate_nDE(Cell_num_i, nDE_num))
 
 colnames(counts) <- paste0("cell_", 1:(Cell_num_i * 2))
 
-record <- rbind(read.csv(paste0("cell_num_",cell_num_i,"_nDE.csv")), read.csv(paste0("cell_num_",cell_num_i,"_DEs.csv")), read.csv(paste0("cell_num_",cell_num_i,"_DEg.csv")), read.csv(paste0("cell_num_",cell_num_i,"_DEa.csv")))
+record <- rbind(read.csv(paste0("Cell_num_",Cell_num_i,"_nDE.csv")), read.csv(paste0("Cell_num_",Cell_num_i,"_DEs.csv")), read.csv(paste0("Cell_num_",Cell_num_i,"_DEg.csv")), read.csv(paste0("Cell_num_",Cell_num_i,"_DEa.csv")))
 
 record <- cbind(record, rep(NA, gene_sum))
 
 colnames(record) <- c("gene_name", "theta_1", "theta_2", "size_1", "size_2", "prob_1", "prob_2", "Type", "DEsingle_Type")
 
-groups <- as.factor(c(rep(TRUE, cell_num_i), rep(FALSE, cell_num_i)))
+groups <- as.factor(c(rep(TRUE, Cell_num_i), rep(FALSE, Cell_num_i)))
 
 
 
@@ -585,11 +591,11 @@ for (j in 1:gene_sum) {
 }
 
 
-write.csv(res, file = paste0("result_num",cell_num_i,".csv"))
+write.csv(res, file = paste0("result_num",Cell_num_i,".csv"))
 
-write.csv(record, file = paste0("origin_num",cell_num_i,".csv"))
+write.csv(record, file = paste0("origin_num",Cell_num_i,".csv"))
 
-#calculating IOUs for cell_num_i
+#calculating IOUs for Cell_num_i
 
 gene_DEa_rows<-grep("gene_DEa_",rownames(res))+1
 
@@ -638,36 +644,7 @@ iou_matrix[2,cell_num_i/100]<-g_iou
 iou_matrix[3,cell_num_i/100]<-s_iou
 
 iou_matrix[4,cell_num_i/100]<-n_iou
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
 }
+
+write.csv(iou_matrix,file="iou_matrix.csv")
