@@ -94,7 +94,7 @@ rzinbinom <- function(n, theta, size, prob = NULL, mu = NULL) {
 
 #Get four types of the genes
 
-DEsingle.res <- read.csv("./small_result.csv")
+DEsingle.res <- read.csv("C:/Users/LHG/Desktop/17-18 summer/DEsingle/middle_result.csv")
 
 DEsingle.res.DEg <- DEsingle.res[which(DEsingle.res$Type == "DEg"),]
 
