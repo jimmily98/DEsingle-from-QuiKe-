@@ -597,13 +597,13 @@ write.csv(record, file = paste0("origin_num",Cell_num_i,".csv"))
 
 #calculating IOUs for Cell_num_i
 
-gene_DEa_rows<-grep("gene_DEa_",rownames(res))+1
+gene_DEa_rows_origin<-grep("gene_DEa_",rownames(res))+1
 
-gene_DEg_rows<-grep("gene_DEg_",rownames(res))+1
+gene_DEg_rows_origin<-grep("gene_DEg_",rownames(res))+1
 
-gene_DEs_rows<-grep("gene_DEs_",rownames(res))+1
+gene_DEs_rows_origin<-grep("gene_DEs_",rownames(res))+1
 
-gene_nDE_rows<-grep("gene_nDE_",rownames(res))+1
+gene_nDE_rows_origin<-grep("gene_nDE_",rownames(res))+1
 
 gene_DEa_rows_result<-grep("DEa",res[,"Type"])+1
 
